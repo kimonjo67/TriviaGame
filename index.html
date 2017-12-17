@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Trivia Game</title>
+	<script src="assets/javascript/app.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+			
+	<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-2">Totally Trivial Trivia</h1>
+  </div>
+</div>
+
+
+<div class="row">
+	<div class="col-md-3">
+		<p>empty</p>
+	</div>
+
+	<div class="col-md-6">
+
+<!-- Add questions for the trivia -->	
+	<form id="quiz" name="quiz">
+	<p>What is the capital city of Kenya</p>
+		
+
+	<div class="form-check display-4">
+		  <label class="form-check-label">
+		    <input class="form-check-input" type="radio" name="exampleRadios" id="multipleChoice" value="Nairobi">
+		    Nairobi
+		  </label>
+		</div>
+		<div class="form-check display-4">
+		  <label class="form-check-label">
+		    <input class="form-check-input" type="radio" name="exampleRadios" id="multipleChoice" value="Mombasa">
+		    Mombasa 
+		  </label>
+		</div>
+		<div class="form-check display-4">
+		  <label class="form-check-label">
+		    <input class="form-check-input" type="radio" name="exampleRadios" id="multipleChoice" value="Cape Town">
+		    Cape Town
+		  </label>
+		</div>
+		<div class="form-check display-4">
+		  <label class="form-check-label">
+		    <input class="form-check-input" type="radio" name="exampleRadios" id="multipleChoice" value="Dar">
+		    Dar
+		  </label>
+		</div>
+	<input id="button" type="button" value="Submit!" onclick="check();">
+	</form>
+
+<!-- Create a pop up message after submit button to alert user -->
+	<div id="afterSubmit">
+		<p id="correctAnswer">"You are right"</p>
+	</div>
+	</div> <!-- Col md 6 -->
+
+	<div class="col-md-3">
+		<p>insert gif here</p>
+	</div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+</html>
