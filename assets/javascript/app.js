@@ -1,39 +1,29 @@
-window.onload = function() {
-	// This code will run as soon as page loads
-
-}
-// Start game by starting the timer
-	
-
-
-// Check through the questions and answers
-
-	// body...
-	
-// Create an object with the questions and answers and userguesses 
 
 var content = [
 	{"question": 'what is the capital city of Kenya?',
-	 "choices":["Nairobi", "washington DC", "kurumbi"],
+	 "choices":["Nairobi", "washington", "Lagos"],
 	 "answer":"Nairobi"
 	},
 
-	{"question": 'what is the TZ?',
-	 "choices":["Arusha", "Dar", "Cape Town"],
-	 "answer":"Arusha"
+	{"question": 'what is the tallest mountaing in Africa?',
+	 "choices":["Arusha", "Kilimanjaro", "Everest"],
+	 "answer":"Kilimanjaro"
 	},
 
-	{"question": 'what animal is not on a safari?',
+	{"question": 'which animal is not in a safari tour?',
 	 "choices":["Elephant", "Giraffe", "Dolphin"],
 	 "answer":"Dolphin"
 	},
 ];
+
  
 var userQuestion = "";
+var userAnswer = "";
 var questionIndex = 0;
 var counterCorrect = 0;
 var counterWrong = 0;
-var answer = "";
+
+
 
  //Timer
 var timerNumber = 11;
@@ -41,7 +31,7 @@ var intervalId;
 
 //when the question is answered go to next question and start timer again
 
-// Fucntion runs the timer by decrements of 1 second
+// Fucntion runs the timer by decrements of 1 second when pages load
 function run() {
 	intervalId = setInterval(decrement, 1000);
 }
@@ -54,53 +44,75 @@ $("#timer").html("<h2>" + timerNumber + "</h2>");
 
  if (timerNumber === 0) {
  	stop();
- 	alert("You lose, TIme is Up!!!");
- 	timerNumber=11;
+ 	document.getElementById("afterSubmit").style.visibility = "visible";
+	document.getElementById("wrongAnswer").innerHTML = "You got " + counterWrong + " wrong";
+ 	timerNumber=10;
  	run();
  }
+
+
 }
 
-// function gameOver() {
-// 	// body...
-// 	if (counterCorrect + counterWrong === 3) {
+// function that will end the game once user chooses their answers
+function gameOver() {
+ 	// body...
+ 		if (counterCorrect + counterWrong === content.length) {
+ 			$("#questions").html("");
+ 			$("#answers").html("<h2>"+ "Game Over, Your Score is: " + counterCorrect);
+ 			stop();
+ 			checkAnswer();
+ 			
+ 			
+	}
+ } gameOver();
 
-// 		$("")
-// 	}
-// }
 
 
-// this function starts the questions and answers
+// this function starts the questions and answers game by going through the arrays object of questions and answers
 function startGame() {
-	// body...
 
-	answer = content[questionIndex].answer
-	userQuestion = content[questionIndex].question
 
+	userAnswer = content[questionIndex].answer;
+	userQuestion = content[questionIndex].question;
 
 	$("#answers").empty();
 	$("#questions").html(userQuestion);
-	console.log("here i go again");
+
 	for (var i = 0; i < content[questionIndex].choices.length; i++) {
 		var button = $("<button>");
 
 		button.attr("data", content[questionIndex].choices[i]);
 		button.text(content[questionIndex].choices[i]);
-		button.click(checkAnswer);
+		var click = button.click(checkAnswer);
 		$("#answers").append(button);
 	};
-};
-startGame();
+};startGame();
 
+
+//function will go through the userguesses and match with the answers
 function checkAnswer() {
 	// body...
-	if ($(this).attr("data") === answer) {
+	if ($(this).attr("data") === userAnswer) {
 		console.log(true);
 		counterCorrect++;
+		document.getElementById("afterSubmit").style.visibility = "visible";
+		document.getElementById("correctAnswer").innerHTML = "You got " + counterCorrect + " correct";
 		questionIndex++;
-	};
-
+		console.log("also true")
+		gameOver();
+		startGame();
+	}
 	else {
-		console.log("wrong");
+		counterWrong++;
+		document.getElementById("afterSubmit").style.visibility = "visible";
+		document.getElementById("wrongAnswer").innerHTML = "You got " + counterWrong + " wrong";
+		questionIndex++;
+		gameOver();
+		startGame();
+	}
+
+	if (counterCorrect > 2) {
+		messages
 	}
 
 };

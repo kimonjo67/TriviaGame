@@ -1,20 +1,34 @@
+body {
+	background-image: url(../images/africa.jpg);
+	background-repeat: no-repeat;
+	background-size:cover;
+}
+
+
 .h1, h1 {
     text-align: center;
  }
  p{
  	text-align: center;
- 	  font-size: 2.5rem;
+ 	  font-size: 2rem;
  }
 
-.containerRow{
+#timer{
 	text-align: center;
 }
 button{
 	margin:0px auto;
-	width:100px;
-	height: 50px;
+	width:180px;
+	height: 80px;
+	font-size: 2rem;
 }
 
 #afterSubmit{
+	visibility: hidden;
+}
+#questions{
+	font-size: 2rem;
+}
+#message{
 	visibility: hidden;
 }
