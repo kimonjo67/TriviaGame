@@ -14,6 +14,15 @@ var content = [
 	 "choices":["Elephant", "Giraffe", "Dolphin"],
 	 "answer":"Dolphin"
 	},
+
+	{"question": 'which animal is at danger of extinction from poarching for its horn?',
+	 "choices":["Rhino", "Elephant", "Chicken"],
+	 "answer":"Rhino"
+	},
+	{"question": 'what of these countries do not have a coastal line?',
+	 "choices":["Nigeria", "Uganda", "Somalia"],
+	 "answer":"Uganda"
+	},
 ];
 
  
