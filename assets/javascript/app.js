@@ -49,37 +49,19 @@ function decrement() {
 	// decrease number by 1...
 	timerNumber --;
 // show number in html
-$("#timer").html("<h2>" + timerNumber + "</h2>");
+	$("#timer").html("<h2>" + timerNumber + "</h2>");
 
- if (timerNumber === 0) {
- 	stop();
- 	document.getElementById("afterSubmit").style.visibility = "visible";
-	document.getElementById("wrongAnswer").innerHTML = "You got " + counterWrong + " wrong";
- 	timerNumber=10;
- 	run();
- }
-
-
-}
-
-// function that will end the game once user chooses their answers
-function gameOver() {
- 	// body...
- 		if (counterCorrect + counterWrong === content.length) {
- 			$("#questions").html("");
- 			$("#answers").html("<h2>"+ "Game Over, Your Score is: " + counterCorrect);
- 			stop();
- 			checkAnswer();
- 			
- 			
+	 if (timerNumber === 0) {
+	 	stop();
+	 	document.getElementById("afterSubmit").style.visibility = "visible";
+		document.getElementById("wrongAnswer").innerHTML = "You got " + counterWrong + " wrong";
+		timerNumber=10;
+		run();
 	}
- } gameOver();
-
-
+}
 
 // this function starts the questions and answers game by going through the arrays object of questions and answers
 function startGame() {
-
 
 	userAnswer = content[questionIndex].answer;
 	userQuestion = content[questionIndex].question;
@@ -95,19 +77,35 @@ function startGame() {
 		var click = button.click(checkAnswer);
 		$("#answers").append(button);
 	};
-};startGame();
+}
+
+
+// function that will end the game once user chooses their answers
+function gameOver() {
+
+ 		if (counterCorrect + counterWrong === content.length) {
+ 			$("#questions").html("");
+ 			$("#answers").html("<h2>"+ "Game Over, Your Score is: " + counterCorrect);
+ 			stop();
+ 			checkAnswer();	
+		};
+ }; 
+	
+ gameOver();
+ startGame();
+ 
 
 
 //function will go through the userguesses and match with the answers
 function checkAnswer() {
 	// body...
 	if ($(this).attr("data") === userAnswer) {
-		console.log(true);
+		// Adding the counter each time user chooses the correct guess
 		counterCorrect++;
 		document.getElementById("afterSubmit").style.visibility = "visible";
 		document.getElementById("correctAnswer").innerHTML = "You got " + counterCorrect + " correct";
+		// Adding the counter each time user gets it wrong
 		questionIndex++;
-		console.log("also true")
 		gameOver();
 		startGame();
 	}
@@ -120,14 +118,10 @@ function checkAnswer() {
 		startGame();
 	}
 
-	if (counterCorrect > 2) {
-		messages
-	}
-
 };
 
+// This function stops the clock from running down once user is done
 function stop() {
-	// body...
 	clearInterval(intervalId);
 }
 run();
